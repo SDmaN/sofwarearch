@@ -1,0 +1,29 @@
+@startuml sysopSquad
+!include C4_Context.puml
+
+title Контекстная схема Sysop Squad
+    
+Person(customer, "Клиент")
+Person(sysop, "Sysop")
+Person(manager, "Менеджер")
+Person(admin, "Администратор")
+
+System(squadSys, "Sysop squad", "Система для управления заявками")
+System_Ext(emailSys, "Email system", "Внешняя система для отправки email-уведомление")
+System_Ext(pushSys, "Push system", "Внешняя система для отправки push-уведомлений")
+
+Rel(customer, squadSys, "Регистрируется, создает заявки", "UI interaction")
+Rel(sysop, squadSys, "Просматривает заявки, базу знаний", "UI interaction")
+Rel(manager, squadSys, "Регистрирует заявки", "UI interaction")
+Rel(admin, squadSys, "Управляет аккаунтами внутренних пользователей", "UI interaction")
+
+Rel(squadSys, emailSys, "Отправляет email-уведомления", "API")
+Rel(squadSys, pushSys, "Отправляет push-уведомления", "API")
+
+Rel(emailSys, customer, "Отправляет уведомление о назначение sysop-а", "SMTP")
+Rel(pushSys, customer, "Отправляет уведомление о назначение sysop-а", "API")
+
+Rel(emailSys, sysop, "Отправляет уведомление о назначении на заявку", "SMTP")
+Rel(pushSys, sysop, "Отправляет уведомление о назначении на заявку", "API")
+
+@enduml
