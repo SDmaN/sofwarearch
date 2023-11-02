@@ -86,3 +86,7 @@ An electronics giant needs a new trouble-ticket system for their customer-facing
 # Контекстная схема
 
 ![Контекстная схема](images/ssquad-c4-context.png)
+
+# ADR
+* [001 - Вендорное решение vs Собственное решение](adr/001-vendor-vs-own.md)
+* [002 - Архитектурный подход](adr/002-architectural-approach.md)
