@@ -1,0 +1,43 @@
+@startuml main
+
+skinparam linetype ortho
+hide circle
+
+entity "Client" as client {
+  name
+  email
+  phone
+}
+
+entity "Ticket" as ticket {
+  created_at
+  status
+  description
+}
+
+entity "Meeting" as meeting {
+  date
+  location
+}
+
+entity "TicketQueue" as ticketQueue {
+  priority
+}
+
+entity "Review" as review {
+  rating
+  text
+  created_at
+}
+
+entity "Sysop" as sysop {
+  name
+  status
+}
+
+entity "Report" as report {
+  description
+  created_at
+}
+
+@enduml

@@ -1,0 +1,81 @@
+@startuml boundctxs
+
+skinparam linetype ortho
+hide circle
+
+rectangle "Client context" {
+  entity "Client" as client {
+    name
+    email
+    phone
+  }
+
+  entity "Ticket" as ticket {
+    created_at
+    status
+    description
+  }
+
+  entity "Review" as review {
+    rating
+    text
+    created_at
+  }
+
+  entity "Meeting" as meeting {
+    date
+    location
+  }
+
+  client -- ticket
+  ticket -- review
+  ticket -- meeting
+}
+
+rectangle "Sysop context" {
+  entity "Ticket" as ticket {
+    created_at
+    status
+    description
+  }
+
+  entity "Sysop" as sysop {
+    name
+    status
+  }
+
+  entity "Report" as report {
+    description
+    created_at
+  }
+
+  entity "Meeting" as meeting {
+    date
+    location
+  }
+
+  sysop -- ticket
+  ticket -- report
+  ticket -- meeting
+}
+
+rectangle "Ticket distribution context" {
+  entity "Ticket" as ticket {
+    created_at
+    status
+    description
+  }
+  
+  entity "TicketQueue" as ticketQueue {
+    priority
+  }
+
+  entity "Manager" as manager {
+    name
+  }
+
+  manager -- ticketQueue
+  ticket -- ticketQueue
+}
+
+@enduml
